@@ -1074,8 +1074,8 @@
 .copy-btn {
   position: absolute;
   bottom: 18px;
-  left: 50%;
-  transform: translateX(-50%);
+  left: 18px;      /* pindah kiri */
+  transform: none; /* hapus translate */
   background: #ffdd7d;
   color: #1c1400;
   border: none;
@@ -1090,8 +1090,9 @@
 
 .copy-btn:hover {
   background: #ffe9a8;
-  transform: translateX(-50%) scale(1.05);
+  transform: scale(1.05); /* tidak ganggu posisi */
 }
+
 
 .hidden { display: none; }
 
