@@ -1018,8 +1018,9 @@
 
   display: flex;
   flex-direction: column;
-  justify-content: center;   /* Nomor rekening di tengah */
-  align-items: center;
+  justify-content: flex-start; /* supaya nomor tetap turun sedikit */
+align-items: center; /* biarkan ini */
+
   gap: 5px;
 }
 
@@ -1087,6 +1088,7 @@
   transition: 0.3s;
   z-index: 999;
 }
+
 
 .copy-btn:hover {
   background: #ffe9a8;
