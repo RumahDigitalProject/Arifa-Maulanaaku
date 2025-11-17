@@ -34,7 +34,7 @@
       left: 0;
       width: 100%;
       height: 100vh;
-      background: linear-gradient(135deg, #7b1f26, #e6b980);
+      background: url('pengantin.webp') center/cover no-repeat;
       display: flex;
       flex-direction: column;
       justify-content: center;
@@ -51,6 +51,24 @@
       margin-bottom: 15px;
     }
 
+    #cover::after {
+      content: '';
+      position: absolute;
+      top: 0; left: 0; right: 0; bottom: 0;
+      background: rgba(0, 0, 0, 0.4);
+      z-index: 1;
+    }
+    #cover-content {
+      position: relative;
+      z-index: 2;
+      padding: 20px;
+      margin-top: 200px;
+      animation: fadeInUp 1.5s ease;
+    }
+#cover-content .title { font-size: 1.2em; margin-bottom: 120px; letter-spacing: 2px; }
+    #cover-content .names { font-size: 2.5em; font-weight: bold; margin-bottom: 25px; }
+    #cover-content .guest { font-size: 1.0em; margin-bottom: 15px; margin-top: 25px; }
+    #cover-content .guest1 { font-size: 0.7em; margin-top: 20px; font-style: 
     #opening button {
       margin-top: 20px;
       padding: 12px 25px;
@@ -64,9 +82,42 @@
       transition: 0.3s;
     }
 
-    #opening button:hover {
-      background: #f1d6c2;
+    .btn-open {
+      padding: 14px 40px;
+      font-size: 1.1em;
+      border: none;
+      border-radius: 50px;
+      cursor: pointer;
+      background: white;
+      color: black;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      transition: all 0.3s;
     }
+    .btn-open:hover { background: #f2f2f2; transform: scale(1.05); }
+    .btn-open i { color: #b76e79; font-size: 1.2em; }
+  
+    /* === NAMA TAMU DI COVER === */
+.nama-tamu {
+  font-family: 'Poppins', sans-serif;
+  font-size: 18px;
+  color: #fff;
+  margin-top: 10px;
+  margin-bottom: 25px;
+  font-weight: 500;
+  letter-spacing: 0.5px;
+  text-transform: capitalize;
+  transition: opacity 0.5s ease;
+}
+    /* Jika tidak ada nama tamu, sembunyikan */
+.nama-tamu.hidden {
+  opacity: 0;
+  height: 0;
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+}
 
     /* ================= KONTEN UNDANGAN ================= */
     #content {
@@ -85,9 +136,21 @@
 <body>
 
   <!-- ================= HALAMAN PEMBUKA ================= -->
-  <div id="opening">
-    <h1>Undangan Pernikahan</h1>
-    <p>Kami mengundang Anda untuk hadir di hari bahagia kami.</p>
+  <!-- COVER -->
+<div id="opening">
+  <div id="cover-content">
+    <p class="title">The Wedding of</p>
+    <h1 class="names">WULAN & DONA</h1>
+
+    <p class="guest">Kepada Yth. Bapak/Ibu/Saudara/i</p>
+    <h3 id="namaTamu" class="nama-tamu"></h3> <!-- 🪶 Nama tamu muncul di sini -->
+
+    <button class="btn-open" id="openBtn">
+      <i class="fa-solid fa-envelope"></i> Buka Undangan
+    </button>
+    <p class="guest1">mohon maaf apabila ada salah penulisan nama/gelar/dsb</p>
+  </div>
+</div>
     <button onclick="openInvitation()">Buka Undangan</button>
   </div>
 
