@@ -1298,7 +1298,8 @@
 
       <div class="rek-name">A/N: Nama Penerima</div>
 
-      <button class="copy-btn" onclick="alert('Diklik!')">Salin</button>
+      <button class="copy-btn" onclick="copyRek()">Salin</button>
+
 
     </div>
 
@@ -1434,19 +1435,35 @@ document.addEventListener("DOMContentLoaded", () => {
 
   // === SALIN NOMOR REKENING ===
   function copyRek() {
-    const nomor = document.getElementById("nomorRek").innerText.trim();
+  const nomor = document.getElementById("nomorRek").textContent.trim();
 
-    navigator.clipboard.writeText(nomor).then(() => {
-      alert("Nomor rekening tersalin:\n" + nomor);
-    }).catch(() => {
-      const temp = document.createElement("textarea");
-      temp.value = nomor;
-      document.body.appendChild(temp);
-      temp.select();
-      document.execCommand("copy");
-      temp.remove();
-      alert("Nomor rekening tersalin:\n" + nomor);
-    });
+  // Jika HTTPS, pakai Clipboard API
+  if (navigator.clipboard && window.isSecureContext) {
+    navigator.clipboard.writeText(nomor)
+      .then(() => {
+        alert("Nomor rekening berhasil disalin:\n" + nomor);
+      })
+      .catch(() => {
+        fallbackCopy(nomor);
+      });
+  } else {
+    // Jika bukan HTTPS, pakai fallback (pasti berhasil)
+    fallbackCopy(nomor);
+  }
+}
+
+function fallbackCopy(text) {
+  const textarea = document.createElement("textarea");
+  textarea.value = text;
+  textarea.style.position = "fixed";
+  textarea.style.opacity = "0";
+  document.body.appendChild(textarea);
+  textarea.focus();
+  textarea.select();
+  document.execCommand("copy");
+  textarea.remove();
+
+  alert("Nomor rekening berhasil disalin:\n" + text);
   }
   // ============================================================
   // === NAMA TAMU DARI URL ===
