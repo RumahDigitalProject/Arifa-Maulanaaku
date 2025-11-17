@@ -1092,6 +1092,25 @@
 }
 
 .hidden { display: none; }
+/* ANGKAT KARTU ATM AGAR TIDAK KETUTUP ANIMASI */
+.gift-container {
+  position: relative;
+  z-index: 10;
+}
+
+/* KARTU ATM HARUS PALING ATAS */
+.atm-card {
+  position: relative;
+  z-index: 20;
+  pointer-events: auto;
+}
+
+/* TOMBOL SALIN PALING ATAS */
+.copy-btn {
+  position: relative;
+  z-index: 9999 !important;
+  pointer-events: auto !important;
+}
 
   </style>
 </head>
@@ -1279,7 +1298,8 @@
 
       <div class="rek-name">A/N: Nama Penerima</div>
 
-      <button class="copy-btn" onclick="copyRek()">Salin</button>
+      <button class="copy-btn" onclick="alert('Diklik!')">Salin</button>
+
     </div>
 
   </div>
@@ -1387,44 +1407,46 @@ document.addEventListener("DOMContentLoaded", () => {
 
 
   // BUKA GIFT
+  // === TOMBOL BUKA GIFT ===
   document.getElementById("openGiftBtn").addEventListener("click", function () {
     const card = document.getElementById("atmCard");
 
+    // munculkan kartu
     card.classList.remove("hidden");
-
     setTimeout(() => {
       card.classList.add("show");
     }, 50);
 
+    // sembunyikan tombol buka gift
     this.style.display = "none";
   });
 
-  // UNIVERSAL SALIN NOMOR REKENING
+  // === FIX TOMBOL SALIN ===
+  // Memastikan tombol bisa diklik meskipun ada animasi-scroll
+  window.addEventListener("DOMContentLoaded", () => {
+    const copyBtn = document.querySelector(".copy-btn");
+    if (copyBtn) {
+      copyBtn.style.pointerEvents = "auto";
+      copyBtn.style.zIndex = "99999";
+      copyBtn.style.position = "relative";
+    }
+  });
+
+  // === SALIN NOMOR REKENING ===
   function copyRek() {
     const nomor = document.getElementById("nomorRek").innerText.trim();
 
-    if (navigator.clipboard && window.isSecureContext) {
-      navigator.clipboard.writeText(nomor).then(() => {
-        alert("Nomor rekening tersalin: " + nomor);
-      }).catch(() => fallbackCopy(nomor));
-
-    } else {
-      fallbackCopy(nomor);
-    }
-  }
-
-  // Fallback copy, bekerja di semua device & webview
-  function fallbackCopy(text) {
-    const temp = document.createElement("input");
-    temp.value = text;
-    document.body.appendChild(temp);
-    temp.select();
-    temp.setSelectionRange(0, 99999);
-
-    document.execCommand("copy");
-    document.body.removeChild(temp);
-
-    alert("Nomor rekening tersalin: " + text);
+    navigator.clipboard.writeText(nomor).then(() => {
+      alert("Nomor rekening tersalin:\n" + nomor);
+    }).catch(() => {
+      const temp = document.createElement("textarea");
+      temp.value = nomor;
+      document.body.appendChild(temp);
+      temp.select();
+      document.execCommand("copy");
+      temp.remove();
+      alert("Nomor rekening tersalin:\n" + nomor);
+    });
   }
   // ============================================================
   // === NAMA TAMU DARI URL ===
