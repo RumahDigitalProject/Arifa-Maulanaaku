@@ -945,6 +945,7 @@
   opacity: 1;
   transform: scale(1) translateY(0);
 }
+
 /* ====== GIFT WEDDING SECTION ====== */
 #gift {
   background: linear-gradient(135deg, #1a1f3c, #000);
@@ -991,20 +992,23 @@
   background: #ffe9a8;
 }
 
-/* Kartu ATM */
+/* ====== KARTU ATM BCA VERSION PREMIUM ====== */
 .atm-card {
   width: 100%;
   max-width: 380px;
   height: 220px;
-  background: linear-gradient(135deg, #1b1b1b, #3a3a3a);
   margin: 30px auto 0;
   border-radius: 18px;
   padding: 20px;
   position: relative;
   color: #fff;
   box-shadow: 0px 6px 25px rgba(0,0,0,0.5);
-  background-image: url('https://i.imgur.com/jmDf1iJ.png');
+
+  /* BCA blue chrome background */
+  background: url("https://i.imgur.com/7mm4cLW.png");
   background-size: cover;
+  background-position: center;
+
   opacity: 0;
   transform: translateY(30px);
   transition: 0.5s ease;
@@ -1015,37 +1019,36 @@
   transform: translateY(0);
 }
 
-/* Nama Bank */
-.bank-name {
+/* Logo BCA */
+.bank-logo {
   position: absolute;
   top: 15px;
   right: 20px;
-  font-size: 17px;
-  font-weight: 700;
-  letter-spacing: 1px;
+  width: 80px;
 }
 
 /* Chip Kartu */
 .atm-chip {
-  width: 45px;
-  height: 35px;
-  background: gold;
+  width: 50px;
+  height: 38px;
+  background: linear-gradient(135deg, #d4d4d4, #8d8d8d);
   border-radius: 6px;
-  margin-top: 50px;
+  margin-top: 55px;
   margin-bottom: 20px;
 }
 
-/* Nomor Rek & Nama */
+/* Nomor Rek */
 .rek-number {
   font-size: 22px;
   font-weight: 600;
   letter-spacing: 2px;
 }
 
+/* Nama Pemilik */
 .rek-name {
   font-size: 16px;
   margin-top: 5px;
-  opacity: 0.9;
+  opacity: 0.95;
 }
 
 /* Tombol Salin */
@@ -1069,9 +1072,12 @@
   transform: scale(1.05);
 }
 
+/* hide */
 .hidden {
   display: none;
 }
+
+
 
   </style>
 </head>
@@ -1247,17 +1253,24 @@
 
     <button id="openGiftBtn" class="btn-gift">Buka Gift</button>
 
-    <!-- KARTU ATM (disembunyikan dulu) -->
-    <div id="atmCard" class="atm-card hidden">
-      <div class="bank-name">BANK MANDIRI</div>
+    <!-- KARTU ATM BCA -->
+    <div id="atmCard" class="atm-card">
+
+      <!-- LOGO BCA -->
+      <div class="bank-logo">
+        <svg width="65" height="28" viewBox="0 0 300 120" fill="white">
+          <path d="M52 10C34 10 20 24 20 42C20 73 63 104 63 104C63 104 106 73 106 42C106 24 92 10 74 10C64 10 56 15 52 23C48 15 40 10 30 10H52Z"/>
+        </svg>
+      </div>
 
       <div class="atm-chip"></div>
 
-      <div class="rek-number" id="nomorRek">1234 5678 9012 3456</div>
+      <div class="rek-number" id="nomorRek">1234567890</div>
 
-      <div class="rek-name">A/N: Nama Penerima</div>
+      <div class="rek-name">A/N: Nama Pemilik Rekening</div>
 
       <button class="copy-btn" onclick="copyRek()">Salin</button>
+
     </div>
 
   </div>
