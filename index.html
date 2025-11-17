@@ -1386,7 +1386,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
 
 
-    // BUKA GIFT (TIDAK DIUBAH)
+  // BUKA GIFT
   document.getElementById("openGiftBtn").addEventListener("click", function () {
     const card = document.getElementById("atmCard");
 
@@ -1399,43 +1399,32 @@ document.addEventListener("DOMContentLoaded", () => {
     this.style.display = "none";
   });
 
-  // SALIN NOMOR REKENING (UNIVERSAL, PALING KOMPATIBEL)
+  // UNIVERSAL SALIN NOMOR REKENING
   function copyRek() {
-    const nomor = document.getElementById("nomorRek").textContent.trim();
+    const nomor = document.getElementById("nomorRek").innerText.trim();
 
-    // 1. Clipboard API modern (jika tersedia + secure)
     if (navigator.clipboard && window.isSecureContext) {
-      navigator.clipboard.writeText(nomor)
-      .then(() => {
+      navigator.clipboard.writeText(nomor).then(() => {
         alert("Nomor rekening tersalin: " + nomor);
-      })
-      .catch(() => fallbackCopy(nomor));
+      }).catch(() => fallbackCopy(nomor));
 
     } else {
-      // 2. Fallback otomatis
       fallbackCopy(nomor);
     }
   }
 
-  // Fallback bekerja di Android WebView, Safari, iframe, HTTP, dll.
+  // Fallback copy, bekerja di semua device & webview
   function fallbackCopy(text) {
-    const input = document.createElement("input");
-    input.value = text;
-    input.style.position = "fixed";
-    input.style.left = "-9999px";
-    document.body.appendChild(input);
+    const temp = document.createElement("input");
+    temp.value = text;
+    document.body.appendChild(temp);
+    temp.select();
+    temp.setSelectionRange(0, 99999);
 
-    input.select();
-    input.setSelectionRange(0, 99999);
+    document.execCommand("copy");
+    document.body.removeChild(temp);
 
-    const success = document.execCommand("copy");
-    document.body.removeChild(input);
-
-    if (success) {
-      alert("Nomor rekening tersalin: " + text);
-    } else {
-      alert("Silakan salin manual: " + text);
-    }
+    alert("Nomor rekening tersalin: " + text);
   }
   // ============================================================
   // === NAMA TAMU DARI URL ===
