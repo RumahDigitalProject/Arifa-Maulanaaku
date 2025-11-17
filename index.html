@@ -1003,11 +1003,10 @@
   margin: 30px auto 0;
   border-radius: 18px;
   padding: 20px;
-  position: relative;
+  position: relative;   /* wajib */
   color: #fff;
   box-shadow: 0px 6px 25px rgba(0,0,0,0.5);
 
-  /* GRADIENT PREMIUM */
   background: linear-gradient(135deg, #001f4d, #003a80, #0070c0, #004a85);
   background-size: 300% 300%;
   animation: premiumMove 6s ease infinite;
@@ -1016,13 +1015,14 @@
   transform: translateY(30px);
   transition: 0.5s ease;
 
+  /* HAPUS FLEX TENGAH YG BIKIN NGACO */
   display: flex;
   flex-direction: column;
-  justify-content: flex-start; /* supaya nomor tetap turun sedikit */
-align-items: center; /* biarkan ini */
-
+  align-items: center;
+  justify-content: flex-start;   /* ini FIX tombol */
   gap: 5px;
 }
+
 
 @keyframes premiumMove {
   0% { background-position: 0% 50%; }
@@ -1076,7 +1076,7 @@ align-items: center; /* biarkan ini */
   position: absolute;
   bottom: 15px;
   left: 15px;
-  transform: none;
+  transform: none !important;
   background: #ffdd7d;
   color: #1c1400;
   border: none;
@@ -1086,8 +1086,9 @@ align-items: center; /* biarkan ini */
   font-weight: 600;
   font-size: 14px;
   transition: 0.3s;
-  z-index: 999;
+  z-index: 9999;
 }
+
 
 
 .copy-btn:hover {
