@@ -736,18 +736,24 @@
 
 /* Tombol Close diperbaiki */
 .close {
+  position: absolute;       /* langsung relatif ke lightbox */
+  top: 20px;
+  right: 30px;
   font-size: 30px;
   cursor: pointer;
-  padding: 8px 12px;                 /* perbesar area klik */
+  padding: 8px 12px;       /* area klik lebih besar */
   border-radius: 8px;
-  background: rgba(0,0,0,0.3);       /* semi-transparent */
+  background: rgba(0,0,0,0.3);
   transition: color 0.3s, background 0.3s;
+  z-index: 1015;            /* selalu di atas gambar dan counter */
+  pointer-events: auto;     /* pastikan bisa diklik */
 }
 
 .close:hover {
   color: black;
-  background: #ffcc00;               /* highlight saat hover */
+  background: #ffcc00;
 }
+
 
 /* Tombol navigasi kiri/kanan cantik */
 .prev, .next {
@@ -1351,14 +1357,18 @@
 
 <!-- Lightbox -->
 <div id="lightbox" class="lightbox">
+  <!-- Tombol close di atas semua -->
+  <span class="close">&times;</span>
+
   <div class="lightbox-top">
     <span class="lightbox-counter">1 / 6</span>
-    <span class="close">&times;</span>
   </div>
+
   <img class="lightbox-img" src="">
   <a class="prev">&#10094;</a>
   <a class="next">&#10095;</a>
 </div>
+
 
 
 
