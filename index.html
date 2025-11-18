@@ -206,10 +206,12 @@
     .box-putih-kecil {
   background: rgba(255, 255, 255, 0.96);
   background-image: url('dasar1.png');
-  background-size: auto;       /* Jangan di-zoom, gunakan ukuran asli */
-  background-repeat: repeat-y; /* Ulangi hanya vertikal (ke bawah) */
-  background-position: top center; /* Mulai dari atas, tengah horizontal */
-  
+
+  /* Sesuaikan lebar kotak, tinggi proporsional */
+  background-size: 100% auto;  
+  background-repeat: repeat-y;   /* Ulangi ke bawah */
+  background-position: top center;
+
   border: 3px solid #f3a302;
   border-radius: 999px;
   aspect-ratio: 9 / 16;
@@ -227,6 +229,7 @@
   flex-direction: column;
   justify-content: center;
 }
+
 
     /* PROFIL */
     .profil {
