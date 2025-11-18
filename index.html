@@ -715,6 +715,7 @@
   transform: translateX(-50%);
   color: white;
   font-family: 'Arial', sans-serif;
+  z-index: 1010; /* pastikan di atas gambar */
 }
 
 .lightbox-counter {
@@ -733,14 +734,19 @@
   transition: transform 0.4s ease;
 }
 
+/* Tombol Close diperbaiki */
 .close {
   font-size: 30px;
   cursor: pointer;
-  transition: color 0.3s;
+  padding: 8px 12px;                 /* perbesar area klik */
+  border-radius: 8px;
+  background: rgba(0,0,0,0.3);       /* semi-transparent */
+  transition: color 0.3s, background 0.3s;
 }
 
 .close:hover {
-  color: #ffcc00;
+  color: black;
+  background: #ffcc00;               /* highlight saat hover */
 }
 
 /* Tombol navigasi kiri/kanan cantik */
@@ -1664,18 +1670,21 @@ galeriItems.forEach((img, index) => {
 });
 
 // Tutup lightbox
-closeBtn.addEventListener('click', () => {
+closeBtn.addEventListener('click', (e) => {
+  e.stopPropagation();       // cegah event bubbling ke lightbox
   lightbox.style.display = 'none';
 });
 
 // Navigasi sebelumnya
-prevBtn.addEventListener('click', () => {
+prevBtn.addEventListener('click', (e) => {
+  e.stopPropagation();       // cegah event bubbling
   currentIndex = (currentIndex - 1 + galeriItems.length) % galeriItems.length;
   updateLightbox(currentIndex);
 });
 
 // Navigasi selanjutnya
-nextBtn.addEventListener('click', () => {
+nextBtn.addEventListener('click', (e) => {
+  e.stopPropagation();       // cegah event bubbling
   currentIndex = (currentIndex + 1) % galeriItems.length;
   updateLightbox(currentIndex);
 });
@@ -1686,6 +1695,7 @@ lightbox.addEventListener('click', (e) => {
     lightbox.style.display = 'none';
   }
 });
+
 
 
 
