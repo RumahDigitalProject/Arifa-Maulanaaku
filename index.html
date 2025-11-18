@@ -204,25 +204,29 @@
 
     /* BOX PUTIH */
     .box-putih-kecil {
-      background: rgba(255, 255, 255, 0.96);
-      background-image: url('dasar1.png');
-      border: 3px solid #f3a302;
-      border-radius: 999px;
-      aspect-ratio: 9 / 16;
-      max-width: 320px;
-      width: 100%;
-      padding: 15px 10px;
-      box-shadow:
-  0 0 20px rgba(255, 255, 255, 0.6),
-  0 0 40px rgba(243, 163, 2, 0.4),
-  0 0 80px rgba(243, 163, 2, 0.3);
-      text-align: center;
-      color: #7b1f26;
-      margin: 0 auto;
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-    }
+  background: rgba(255, 255, 255, 0.96);
+  background-image: url('dasar1.png');
+  background-size: auto;       /* Jangan di-zoom, gunakan ukuran asli */
+  background-repeat: repeat-y; /* Ulangi hanya vertikal (ke bawah) */
+  background-position: top center; /* Mulai dari atas, tengah horizontal */
+  
+  border: 3px solid #f3a302;
+  border-radius: 999px;
+  aspect-ratio: 9 / 16;
+  max-width: 320px;
+  width: 100%;
+  padding: 15px 10px;
+  box-shadow:
+    0 0 20px rgba(255, 255, 255, 0.6),
+    0 0 40px rgba(243, 163, 2, 0.4),
+    0 0 80px rgba(243, 163, 2, 0.3);
+  text-align: center;
+  color: #7b1f26;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
 
     /* PROFIL */
     .profil {
