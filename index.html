@@ -296,8 +296,17 @@
     }
  /* === COUNTDOWN GRADIENT STYLE === */
 #countdown-section {
-  text-align: center;
-  padding: 40px 0;
+  width: 100%;
+  max-width: 380px;
+  height: 220px;
+  margin: 30px auto 0;
+  border-radius: 18px;
+  padding: 20px;
+  padding-top: 60px;   /* ⬅️ Tambahan baru: bikin konten turun ke tengah */
+  position: relative;
+  color: #fff;
+  box-shadow: 0px 6px 25px rgba(0,0,0,0.5);
+
   background: linear-gradient(135deg, #001f4d, #003a80, #0070c0, #004a85);
   background-size: 300% 300%;
   animation: premiumMove 6s ease infinite;
