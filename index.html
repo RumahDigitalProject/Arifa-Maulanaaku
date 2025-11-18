@@ -814,55 +814,85 @@
   }
 
 
-/* === UCAPAN TERIMA KASIH === */
+/* === OVERLAY DAN UCAPAN GABUNG === */
 #ucapan {
+  position: relative;
   background-image: url('dasar1.webp');
-  /* Lebar mengikuti elemen, tinggi proporsional */
-  background-size: 100% auto;  
-  background-repeat: repeat-y;   /* Ulangi ke bawah */
+  background-size: 100% auto;
+  background-repeat: repeat-y;
   background-position: top center;
-  padding: 80px 20px;
+  padding: 0;
   display: flex;
   justify-content: center;
-  align-items: center;
+  align-items: flex-start;
 }
+
+#ucapan .overlay {
+  background-color: rgba(0, 0, 0, 0.45); /* overlay semi-transparan */
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  padding: 80px 0 80px; /* jarak atas & bawah */
+}
+
 .ucapan-box {
   padding: 40px 30px 80px;
   background: url('dasar.png') no-repeat center center;
   background-size: cover;
-  background-attachment: fixed; /* background diam saat scroll */
+  background-attachment: fixed;
   display: flex;
-  justify-content: center; /* horizontal center */
-  align-items: center;     /* vertical center */
-  position: relative; /* penting untuk overlay */
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  position: relative;
   z-index: 1;
-  border-radius: 40px 40px 80px 80px; /* bagian bawah melengkung */
-  text-align: center; /* teks di dalam center */
-  flex-direction: column; /* supaya anak elemen stack ke bawah */
+  border-radius: 40px 40px 80px 80px;
+  text-align: center;
+  width: 100%;
+  max-width: 1200px;
 }
+
+.ucapan-box .pengantin {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  max-width: 90%;
+  margin-bottom: 80px; /* spasi ke footer */
+}
+
+.ucapan-box .foto {
+  width: 180px;
+  height: auto;
+  border-radius: 50%;
+  margin-bottom: 20px;
+}
+
 .ucapan-teks {
   font-family: 'Poppins', sans-serif;
   font-size: 16px;
   color: #FFFFFF;
   line-height: 1.6;
   margin-bottom: 20px;
-  text-align: center; /* pastikan teks rata tengah */
+  text-align: center;
 }
 
 .ucapan-nama {
   font-family: 'Great Vibes', cursive;
-  font-size: 20px; /* sedikit diperbesar supaya lebih menonjol */
+  font-size: 20px;
   color:  #f3a302; 
-  text-align: center; /* rata tengah */
+  text-align: center;
   line-height: 1.2;
 }
 
-  /* === FOOTER GAYA INVIGLORY === */
+/* Footer */
 .footer-wedding {
+  background-color: transparent; /* biar overlay tetap terlihat */
   color: #f7e9e9;
   text-align: center;
   padding: 80px 20px 100px;
   font-family: "Poppins", sans-serif;
+  margin-top: 40px; /* jarak ke atas */
 }
 
 .footer-made {
@@ -912,6 +942,20 @@
   opacity: 0.8;
 }
 
+/* RESPONSIVE */
+@media (max-width: 768px) {
+  .ucapan-box .foto { width: 140px; }
+  .ucapan-teks { font-size: 14px; }
+  .ucapan-nama { font-size: 18px; }
+  .footer-made, .footer-brand, .footer-copy { font-size: 12px; }
+}
+
+@media (max-width: 480px) {
+  .ucapan-box .foto { width: 120px; }
+  .ucapan-teks { font-size: 13px; }
+  .ucapan-nama { font-size: 16px; }
+  .footer-made, .footer-brand, .footer-copy { font-size: 10px; }
+}
 
 
 .menu-bawah {
@@ -1409,47 +1453,46 @@
   <a href="#rsvp" title="Ucapan"><i class="fa-solid fa-message"></i></a>
 </nav>
 
-
-    <!-- PENUTUP + FOOTER GABUNG -->
+<!-- PENUTUP + FOOTER GABUNG DENGAN OVERLAY -->
 <section id="ucapan">
-  <div class="ucapan-box animasi-scroll">
-    <!-- Bagian Penutup -->
-    <div class="pengantin animasi-scroll" data-anim="zoom-up">
-      <img alt="Pengantin Perempuan" class="foto" src="foto1.webp" loading="lazy"/>
-      <p class="ucapan-teks animasi-scroll" data-anim="zoom-up">
-        Merupakan suatu kehormatan dan kebahagiaan bagi kami apabila Bapak/Ibu/Saudara/i berkenan hadir dan memberikan doa restu, Atas kehadiran dan doa restunya kami mengucapkan terima kasih..
-      </p>
-      <p class="ucapan-nama animasi-scroll" data-anim="zoom-up">
-        Bapak Kaswan & Ibu Siti Fatimah<br>
-        Sekeluarga
-      </p>
+  <div class="overlay">
+    <div class="ucapan-box animasi-scroll">
+      <!-- Bagian Penutup -->
+      <div class="pengantin animasi-scroll" data-anim="zoom-up">
+        <img alt="Pengantin Perempuan" class="foto" src="foto1.webp" loading="lazy"/>
+        <p class="ucapan-teks animasi-scroll" data-anim="zoom-up">
+          Merupakan suatu kehormatan dan kebahagiaan bagi kami apabila Bapak/Ibu/Saudara/i berkenan hadir dan memberikan doa restu, Atas kehadiran dan doa restunya kami mengucapkan terima kasih..
+        </p>
+        <p class="ucapan-nama animasi-scroll" data-anim="zoom-up">
+          Bapak Kaswan & Ibu Siti Fatimah<br>
+          Sekeluarga
+        </p>
+      </div>
+
+      <!-- Bagian Footer -->
+      <footer class="footer-wedding">
+        <p class="footer-made">Made With By</p>
+        <div class="footer-brand">
+          <strong>Rumah Digital Project</strong>
+        </div>
+
+        <div class="footer-icons">
+          <a href="https://wa.me/6285706889273" target="_blank" title="WhatsApp">
+            <i class="fa-brands fa-whatsapp"></i>
+          </a>
+          <a href="https://www.instagram.com/_firnanda?igsh=OXc2MWNodnpyNWRj" target="_blank" title="Instagram">
+            <i class="fa-brands fa-instagram"></i>
+          </a>
+          <a href="https://yourwebsite.com" target="_blank" title="Website">
+            <i class="fa-solid fa-link"></i>
+          </a>
+        </div>
+
+        <p class="footer-copy">© 2025 Rumah Digital Project</p>
+      </footer>
     </div>
-
-    <!-- Bagian Footer -->
-    <footer class="footer-wedding">
-      <p class="footer-made">Made With By</p>
-      <div class="footer-brand">
-        <strong>Rumah Digital Project</strong>
-      </div>
-
-      <div class="footer-icons">
-        <a href="https://wa.me/6285706889273" target="_blank" title="WhatsApp">
-          <i class="fa-brands fa-whatsapp"></i>
-        </a>
-        <a href="https://www.instagram.com/_firnanda?igsh=OXc2MWNodnpyNWRj" target="_blank" title="Instagram">
-          <i class="fa-brands fa-instagram"></i>
-        </a>
-        <a href="https://yourwebsite.com" target="_blank" title="Website">
-          <i class="fa-solid fa-link"></i>
-        </a>
-      </div>
-
-      <p class="footer-copy">© 2025 Rumah Digital Project</p>
-    </footer>
   </div>
 </section>
-
-
 
   
 
