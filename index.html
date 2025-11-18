@@ -295,49 +295,15 @@
       .and-symbol { font-size: 46px; }
     }
  
+
 /* ================= COUNTDOWN SECTION ================= */
 #countdown-section {
   position: relative;
   text-align: center;
   padding: 60px 0;
+  height: 100vh; /* full screen */
+  background-color: #f5f0e6; /* ganti sesuai warna yang kamu mau */
   overflow: hidden;
-  height: 100vh; /* Full screen */
-}
-
-/* === BACKGROUND SLIDESHOW === */
-.bg-slideshow {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  z-index: 1;
-}
-
-.bg-slideshow img {
-  position: absolute;
-  width: 100%;
-  height: 100%;
-  object-fit: cover; /* foto penuh */
-  top: 0;
-  left: 0;
-  opacity: 0;
-  transition: opacity 1s ease-in-out;
-}
-
-.bg-slideshow img.active {
-  opacity: 1;
-}
-
-/* Overlay hitam */
-.overlay {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background: rgba(0,0,0,0.5);
-  z-index: 2;
 }
 
 /* Countdown content di bagian bawah */
@@ -346,11 +312,11 @@
   bottom: 50px; /* jarak dari bawah section */
   left: 50%;
   transform: translateX(-50%);
-  z-index: 3;
+  z-index: 1;
   color: #fff;
   text-align: center;
   width: 100%;
-  max-width: 600px; /* optional, biar countdown tidak terlalu lebar */
+  max-width: 600px;
 }
 
 /* Jika ingin teks atas countdown sedikit lebih kecil */
@@ -358,7 +324,6 @@
   margin-bottom: 15px;
   font-size: 1.1rem;
 }
-
 
 /* ================= COUNTDOWN LAMA ================= */
 #countdown {
@@ -852,7 +817,7 @@
 
 .ucapan-nama {
   font-family: 'Great Vibes', cursive;
-  font-size: 20px; /* sedikit diperbesar supaya lebih menonjol */
+  font-size: 24px; /* sedikit diperbesar supaya lebih menonjol */
   color:  #f3a302; 
   text-align: center; /* rata tengah */
   line-height: 1.2;
