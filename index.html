@@ -824,13 +824,19 @@
 }
 
 .ucapan-box {
-  background-image: url('dasar.png');
+  position: relative;           /* penting supaya overlay tidak menimpa konten */
+  background-color: white;      /* warna dasar */
   padding: 40px 30px 80px;
   max-width: 500px;
   text-align: center;
-  border-radius: 40px 40px 80px 80px; /* bagian bawah melengkung */
+  border-radius: 40px 40px 80px 80px; /* bentuk bawah melengkung */
   box-shadow: 0 8px 20px rgba(0,0,0,0.08);
-  position: relative;
+
+  /* Background gambar diulang ke bawah, tidak nge-zoom */
+  background-image: url('galeri.webp');  
+  background-repeat: repeat-y;   /* ulangi vertikal */
+  background-size: auto;          /* ukuran asli gambar, tidak nge-zoom */
+  background-position: top center;
 }
 .ucapan-teks {
   font-family: 'Poppins', sans-serif;
@@ -1215,7 +1221,7 @@
 <section id="countdown-section" class="countdown-section">
   <!-- Background slideshow -->
   <div class="bg-slideshow">
-    <img src="foto2.webp" alt="Foto 1">
+    <img src="foto7.webp" alt="Foto 1">
     <img src="foto3.webp" alt="Foto 2">
   </div>
 
