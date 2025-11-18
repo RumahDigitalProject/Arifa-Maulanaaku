@@ -145,17 +145,18 @@
 
     /* KONTEN */
 .invitation1 {
+  position: relative;
+  z-index: 1;
   padding: 40px 20px;
   display: flex;
   justify-content: center;
   align-items: center;
-  position: relative;
-  z-index: 1;
-  
+  overflow: hidden; /* memastikan gradient animasi tetap utuh */
   background: linear-gradient(135deg, #0f1c3f, #1a2a55, #0a0a0a, #1a2a55, #0f1c3f);
   background-size: 300% 300%;
   animation: premiumMove 20s ease infinite;
 }
+
 
 @keyframes premiumMove {
   0% { background-position: 0% 50%; }
