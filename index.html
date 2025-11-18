@@ -715,11 +715,15 @@
 
   /* ====== GAYA KHUSUS RSVP ====== */
   #rsvp {
-    background-image: url('dasar.png');
-  text-align: center;
-  background-repeat: repeat-y;
-  background-size: contain;
-  background-position: top center;
+    background: #7b1f26 url('dasar1.png') no-repeat center center;
+  background-size: cover;
+  background-attachment: fixed; /* 🎯 INI YANG BIKIN BACKGROUND DIAM */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 40px 20px;
+  position: relative;
+  z-index: 1;
   }
 .RSVP-title {
   font-family: 'Great Vibes', cursive;
