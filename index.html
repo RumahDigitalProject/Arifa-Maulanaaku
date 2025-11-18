@@ -20,56 +20,22 @@
     * { margin: 0; padding: 0; box-sizing: border-box; }
     html, body { font-family: 'Poppins', sans-serif; scroll-behavior: smooth; background: #fff7f7; overflow-x: hidden; }
 
-    /* COVER */
-#cover {
-  position: fixed;
-  z-index: 9999;
-  top: 0; left: 0;
-  width: 100%;
-  height: 100vh;
-  background: url('foto3.webp') center/cover no-repeat;
-  display: flex;
-  justify-content: flex-start; /* mulai dari atas */
-  align-items: center;
-  flex-direction: column;
-  text-align: center;
-  color: white;
-  transition: opacity 1s ease;
-  padding-top: 60px; /* jarak dari atas layar */
-}
-
-/* Overlay gelap */
-#cover::after {
-  content: '';
-  position: absolute;
-  top: 0; left: 0; right: 0; bottom: 0;
-  background: rgba(0, 0, 0, 0.4);
-  z-index: 1;
-}
-
-/* Konten cover */
-#cover-content {
-  position: relative;
-  z-index: 2;
-  padding: 0 120px; /* padding horizontal tetap */
-  margin-top: 0; /* hapus margin-top besar */
-  animation: fadeInUp 1.5s ease;
-}
-
-/* Title dan Names */
-#cover-content .title {
-  font-size: 1.2em;
-  margin-bottom: 10px; /* rapat ke names */
-  letter-spacing: 2px;
-}
-
-#cover-content .names {
-  font-size: 2.5em;
-  font-weight: bold;
-  margin-bottom: 25px;
-}
-
-/* Nama tamu */
+        /* COVER */
+    #cover {
+      position: fixed;
+      z-index: 9999;
+      top: 0; left: 0;
+      width: 100%; height: 100vh;
+      background: url('foto3.webp') center/cover no-repeat;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      flex-direction: column;
+      text-align: center;
+      color: white;
+      transition: opacity 1s ease;
+    }
+    /* === NAMA TAMU DI COVER === */
 .nama-tamu {
   font-family: 'Poppins', sans-serif;
   font-size: 18px;
@@ -91,49 +57,45 @@
   overflow: hidden;
 }
 
-/* Guest info */
-#cover-content .guest {
-  font-size: 1.0em;
-  margin-bottom: 15px;
-  margin-top: 25px;
-}
+    #cover::after {
+      content: '';
+      position: absolute;
+      top: 0; left: 0; right: 0; bottom: 0;
+      background: rgba(0, 0, 0, 0.4);
+      z-index: 1;
+    }
+    #cover-content {
+      position: relative;
+      z-index: 2;
+      padding: 20px;
+      margin-top: 200px;
+      animation: fadeInUp 1.5s ease;
+    }
+    #cover-content .title { font-size: 1.2em; margin-bottom: 120px; letter-spacing: 2px; }
+    #cover-content .names { font-size: 2.5em; font-weight: bold; margin-bottom: 25px; }
+    #cover-content .guest { font-size: 1.0em; margin-bottom: 15px; margin-top: 25px; }
+    #cover-content .guest1 { font-size: 0.7em; margin-top: 20px; font-style: italic;}
+    .btn-open {
+      padding: 14px 40px;
+      font-size: 1.1em;
+      border: none;
+      border-radius: 50px;
+      cursor: pointer;
+      background: white;
+      color: black;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      transition: all 0.3s;
+    }
+    .btn-open:hover { background: #f2f2f2; transform: scale(1.05); }
+    .btn-open i { color: #b76e79; font-size: 1.2em; }
 
-#cover-content .guest1 {
-  font-size: 0.7em;
-  margin-top: 20px;
-  font-style: italic;
-}
-
-/* Button buka undangan */
-.btn-open {
-  padding: 14px 40px;
-  font-size: 1.1em;
-  border: none;
-  border-radius: 50px;
-  cursor: pointer;
-  background: white;
-  color: black;
-  display: inline-flex;
-  align-items: center;
-  gap: 8px;
-  transition: all 0.3s;
-}
-
-.btn-open:hover {
-  background: #f2f2f2;
-  transform: scale(1.05);
-}
-
-.btn-open i {
-  color: #b76e79;
-  font-size: 1.2em;
-}
-
-/* Animasi masuk */
-@keyframes fadeInUp {
-  from { opacity: 0; transform: translateY(30px); }
-  to { opacity: 1; transform: translateY(0); }
-}
+    /* ANIMASI MASUK */
+    @keyframes fadeInUp {
+      from { opacity: 0; transform: translateY(30px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
 
 
     /* HALAMAN ISI */
@@ -1201,21 +1163,6 @@
   </div>
 </div>
 
-
-    <!-- ISI -->
-<!-- Bagian slideshow diganti video fullscreen -->
-<div class="slideshow">
-  <video class="background-video" autoplay muted playsinline 
-         onended="this.pause(); this.currentTime=this.duration;">
-    <source src="video1.mp4" type="video/mp4">
-  </video>
-
-  <!-- Panah animasi -->
-  <div class="scroll-arrow" id="scrollArrow">
-    &#8595; <!-- panah bawah, bisa diganti icon SVG -->
-  </div>
-</div>
-
   
 <section id="invitation1" section class="invitation1" style="position: relative;">
 <div class="bg-static"></div> <!-- 🎯 background diam hanya untuk section ini -->
@@ -1458,7 +1405,7 @@
         Merupakan suatu kehormatan dan kebahagiaan bagi kami apabila Bapak/Ibu/Saudara/i berkenan hadir dan memberikan doa restu, Atas kehadiran dan doa restunya kami mengucapkan terima kasih..
       </p>
       <p class="ucapan-nama animasi-scroll" data-anim="zoom-up">
-        Bapak Kaswan & Ibu Masruroh<br>
+        Bapak Kaswan & Umi Masruroh<br>
         Sekeluarga
       </p>
     </div>
