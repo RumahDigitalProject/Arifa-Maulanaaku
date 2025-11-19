@@ -1390,15 +1390,13 @@ document.addEventListener("DOMContentLoaded", () => {
 
 
   
-const video = document.querySelector(".background-video");
 const arrow = document.getElementById("scrollArrow");
 
-// Munculkan panah ketika video sudah di detik ke-7
-video.addEventListener("timeupdate", () => {
-  if(video.currentTime >= 8) {
-    arrow.style.opacity = 1;
-  }
-});
+// munculkan panah setelah 2 detik
+setTimeout(() => {
+  arrow.style.opacity = 1;
+}, 2000);
+
 
 
 
