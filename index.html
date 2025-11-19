@@ -136,7 +136,43 @@
   from { transform: translateX(-50%) translateY(0); }
   to   { transform: translateX(-50%) translateY(15px); }
 }
+/* Area slideshow */
+.slideshow {
+  position: relative;
+  width: 100%;
+  height: 100vh; /* sesuai background-mu */
+  overflow: hidden; /* burung tidak keluar area */
+}
 
+/* Container burung */
+#flying-birds {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  z-index: 5; /* di atas background, di bawah teks */
+}
+
+/* Burung */
+.bird {
+  position: absolute;
+  color: black;
+  font-size: 10px;
+  opacity: 0.8;
+  animation: fly linear infinite;
+}
+
+/* Burung terbang dari kiri ke kanan */
+@keyframes fly {
+  0% {
+    transform: translateX(-10vw) translateY(0) scale(1);
+  }
+  100% {
+    transform: translateX(110vw) translateY(-10vh) scale(1.2);
+  }
+}
 
     
     /* BACKGROUND KHUSUS HANYA UNTUK BAGIAN BISMILLAH SAMPAI PENGANTIN */
@@ -1109,10 +1145,14 @@
 <div class="slideshow">
   <img src="foto12.png" class="background-image" alt="background">
 
+  <!-- burung terbang hanya di area ini -->
+  <div id="flying-birds"></div>
+
   <div class="scroll-arrow" id="scrollArrow">
     &#8595;
   </div>
 </div>
+
 
 
   
@@ -1555,6 +1595,40 @@ function fallbackCopy(text) {
   });
 
 
+
+function spawnBirds() {
+  const container = document.getElementById("flying-birds");
+
+  for (let i = 0; i < 6; i++) { // jumlah burung
+    let bird = document.createElement("div");
+    bird.classList.add("bird");
+
+    // bentuk burung kecil (seperti di contoh)
+    bird.innerHTML = "V"; 
+    // Kalau mau SVG siluet burung, bilang ya.
+
+    // posisi awal acak
+    bird.style.top = Math.random() * 50 + "vh";
+    bird.style.left = Math.random() * 100 + "vw";
+
+    // ukuran acak
+    bird.style.fontSize = (8 + Math.random() * 8) + "px";
+
+    // durasi terbang acak
+    bird.style.animationDuration = (5 + Math.random() * 8) + "s";
+
+    // delay acak agar tidak start barengan
+    bird.style.animationDelay = Math.random() * 5 + "s";
+
+    container.appendChild(bird);
+  }
+}
+
+spawnBirds();
+
+
+
+  
   // ============================================================
   // === GALERI ACARA ===
   // ============================================================
