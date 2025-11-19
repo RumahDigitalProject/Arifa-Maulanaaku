@@ -783,9 +783,10 @@
 /* WRAPPER BACKGROUND MENYATUKAN UCAPAN + FOOTER */
 .ucapan-footer-bg {
   background-image: url('dasar1.webp');
-  background-size: auto;        /* Tidak nge-zoom, pakai ukuran asli gambar */
-  background-repeat: repeat-y;  /* Mengulang ke bawah */
-  background-position: center top;
+  min-height: 100vh;
+  background-repeat: repeat-y;
+  background-size: contain;
+  background-position: top center;
 }
 #ucapan {
   background-size: 100% auto;
@@ -1175,15 +1176,9 @@
 }
 
 .gift-receiver {
-  font-size: 16px;
+  font-size: 15px;
   margin-bottom: 6px;
   opacity: 0.9;
-}
-
-.gift-phone {
-  font-size: 16px;
-  font-weight: 600;
-  letter-spacing: 1px;
 }
 
 
@@ -1376,28 +1371,19 @@
 
     <!-- Kartu ATM -->
     <div id="atmCard" class="atm-card hidden">
-
       <div class="bank-name">SEA BANK</div>
-
       <div class="atm-chip"></div>
-
       <div class="rek-number" id="nomorRek">9011 6173 5590</div>
-
       <div class="rek-name">Arifa Khamida Zuninda Putri</div>
-
       <button class="copy-btn" onclick="copyRek()">Salin</button>
     </div>
 <!-- KARTU KE 2: KIRIM HADIAH -->
 <div id="giftCard" class="gift-card hidden">
 
   <div class="gift-icon">🎁</div>
-
   <div class="gift-title">Kirim Hadiah</div>
-
-  <div class="gift-receiver">Penerima: Arifa Khamida Zuninda Putri</div>
-
-  <div class="gift-phone">0812-3456-7890</div>
-
+  <div class="gift-receiver">Nama Penerima: Arifa Khamida Z. P<br>
+    No. Hp :0812-3456-7890</div>
   </div>
 </section>
 
