@@ -780,8 +780,14 @@
 
 
 /* === UCAPAN TERIMA KASIH === */
-#ucapan {
+/* WRAPPER BACKGROUND MENYATUKAN UCAPAN + FOOTER */
+.ucapan-footer-bg {
   background-image: url('dasar1.webp');
+  background-size: cover;
+  background-position: center;
+  background-repeat: repeat-y;
+}
+#ucapan {
   background-size: 100% auto;
   background-repeat: repeat-y;
   background-position: top center;
@@ -844,7 +850,6 @@
 
   /* === FOOTER GAYA INVIGLORY === */
 .footer-wedding {
-  background-image: url('dasar1.webp');
   color: #f7e9e9;
   text-align: center;
   padding: 80px 20px 100px;
@@ -1384,51 +1389,54 @@
   <a href="#rsvp" title="Ucapan"><i class="fa-solid fa-message"></i></a>
 </nav>
 
-<!-- PENUTUP + FOOTER GABUNG -->
-<section id="ucapan">
-  <div class="ucapan-box animasi-scroll">
+<!-- WRAPPER BACKGROUND MENYATUKAN UCAPAN + FOOTER -->
+<div class="ucapan-footer-bg">
 
-    <div class="pengantin animasi-scroll" data-anim="zoom-up">
+  <!-- SECTION UCAPAN -->
+  <section id="ucapan">
+    <div class="ucapan-box animasi-scroll">
 
-      <img alt="Pengantin Perempuan" class="foto" src="foto5.webp" loading="lazy"/>
+      <div class="pengantin animasi-scroll" data-anim="zoom-up">
+        <img alt="Pengantin Perempuan" class="foto" src="foto5.webp" loading="lazy"/>
 
-      <p class="ucapan-teks animasi-scroll" data-anim="zoom-up">
-        Merupakan suatu kehormatan dan kebahagiaan bagi kami apabila Bapak/Ibu/Saudara/i berkenan hadir dan memberikan doa restu, Atas kehadiran dan doa restunya kami mengucapkan terima kasih..
-      </p>
+        <p class="ucapan-teks animasi-scroll" data-anim="zoom-up">
+          Merupakan suatu kehormatan dan kebahagiaan bagi kami apabila Bapak/Ibu/Saudara/i berkenan hadir...
+        </p>
 
-      <p class="ucapan-nama animasi-scroll" data-anim="zoom-up">
-        <strong>Hormat Kami<br>
-        Bapak Kaswan & Umi Masruroh<br>
-        Sekeluarga</strong>
-      </p>
+        <p class="ucapan-nama animasi-scroll" data-anim="zoom-up">
+          <strong>Hormat Kami<br>
+          Bapak Kaswan & Umi Masruroh<br>
+          Sekeluarga</strong>
+        </p>
+      </div>
 
     </div>
+  </section>
 
-  </div>
-</section>
+  <!-- FOOTER -->
+  <footer class="footer-wedding">
+    <p class="footer-made">Made With By</p>
+    <div class="footer-brand">
+      <strong>Rumah Digital Project</strong>
+    </div>
 
+    <div class="footer-icons">
+      <a href="https://wa.me/6285706889273" target="_blank" title="WhatsApp">
+        <i class="fa-brands fa-whatsapp"></i>
+      </a>
+      <a href="https://www.instagram.com/_firnanda?igsh=OXc2MWNodnpyNWRj" target="_blank" title="Instagram">
+        <i class="fa-brands fa-instagram"></i>
+      </a>
+      <a href="https://yourwebsite.com" target="_blank" title="Website">
+        <i class="fa-solid fa-link"></i>
+      </a>
+    </div>
 
-    <!-- Bagian Footer -->
-    <footer class="footer-wedding">
-      <p class="footer-made">Made With By</p>
-      <div class="footer-brand">
-        <strong>Rumah Digital Project</strong>
-      </div>
+    <p class="footer-copy">© 2025 Rumah Digital Project</p>
+  </footer>
 
-      <div class="footer-icons">
-        <a href="https://wa.me/6285706889273" target="_blank" title="WhatsApp">
-          <i class="fa-brands fa-whatsapp"></i>
-        </a>
-        <a href="https://www.instagram.com/_firnanda?igsh=OXc2MWNodnpyNWRj" target="_blank" title="Instagram">
-          <i class="fa-brands fa-instagram"></i>
-        </a>
-        <a href="https://yourwebsite.com" target="_blank" title="Website">
-          <i class="fa-solid fa-link"></i>
-        </a>
-      </div>
+</div>
 
-      <p class="footer-copy">© 2025 Rumah Digital Project</p>
-    </footer>
   
 
 
