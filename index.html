@@ -1228,25 +1228,29 @@
   position: absolute;
   bottom: 15px;
   left: 15px;
-  transform: none !important;
-  background: #ffdd7d;
-  color: #1c1400;
-  border: none;
-  padding: 8px 15px;
-  border-radius: 10px;
+  background: #ffffff;
+  color: #333;
+  border: 1px solid #ccc;
+  padding: 6px 13px;
+  border-radius: 8px;
   cursor: pointer;
-  font-weight: 600;
-  font-size: 14px;
-  transition: 0.3s;
-  z-index: 9999;
+  font-size: 13px;
+  font-weight: 500;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  transition: 0.2s ease;
 }
 
-
+.copy-btn i {
+  font-size: 14px;
+}
 
 .copy-btn:hover {
-  background: #ffe9a8;
-  transform: scale(1.05);
+  background: #f7f7f7;
+  transform: scale(1.03);
 }
+
 
 
 
@@ -1547,8 +1551,10 @@
 </div>
       <div class="atm-chip"></div>
       <div class="rek-number" id="nomorRek">9011 6173 5590</div>
-      <button class="copy-btn" onclick="copyRek()">Salin</button>
-    </div>
+      <button class="copy-btn" onclick="copyRek()">
+  <i class="fa-regular fa-copy"></i> <span>Salin</span>
+</button>
+
 <!-- KARTU KE 2: KIRIM HADIAH -->
 <div id="giftCard" class="gift-card hidden">
 
@@ -1681,13 +1687,12 @@ const arrow = document.getElementById("scrollArrow");
 // munculkan panah setelah 2 detik
 setTimeout(() => {
   arrow.style.opacity = 1;
-}, 2000);
+}, 4000);
 
 
 
 
   
-
 // ============================================================
 // === GIFT ===
 // ============================================================
@@ -1794,6 +1799,7 @@ textarea.remove();
 
 alert("Nomor rekening berhasil disalin:\n" + text);
 }
+
 
 
   
