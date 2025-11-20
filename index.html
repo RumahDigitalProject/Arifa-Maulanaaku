@@ -1143,7 +1143,7 @@
 }
 
 
-/* ====== KARTU ATM PREMIUM (FIX POSITION) ====== */
+/* ====== KARTU ATM PREMIUM ====== */
 .atm-card {
   width: 100%;
   max-width: 380px;
@@ -1151,27 +1151,23 @@
   margin: 30px auto 0;
   border-radius: 18px;
   padding: 20px;
-  padding-top: 60px;   /* ⬅️ Tambahan baru: bikin konten turun ke tengah */
-  position: relative;
+  padding-top: 60px;   /* konten turun ke tengah */
+  position: relative;   /* child absolute tetap di dalam */
   color: #fff;
   box-shadow: 0px 6px 25px rgba(0,0,0,0.5);
-
   background: linear-gradient(135deg, #001f4d, #003a80, #0070c0, #004a85);
   background-size: 300% 300%;
   animation: premiumMove 6s ease infinite;
-
   opacity: 0;
   transform: translateY(30px);
   transition: 0.5s ease;
-
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: flex-start; 
   gap: 5px;
+  z-index: 1; /* di atas background gift overlay */
 }
-
-
 
 @keyframes premiumMove {
   0% { background-position: 0% 50%; }
@@ -1184,20 +1180,20 @@
   transform: translateY(0);
 }
 
-/* Nama Bank */
+/* ====== Logo Bank ====== */
 .bank-logo {
   position: absolute;
   top: 15px;
   right: 20px;
+  z-index: 2;
 }
 
 .bank-logo img {
-  width: 85px;   /* Silakan sesuaikan */
+  width: 85px;
   height: auto;
 }
 
-
-/* Chip di pojok kiri atas */
+/* ====== Chip ====== */
 .atm-chip {
   position: absolute;
   top: 20px;
@@ -1207,29 +1203,32 @@
   background: linear-gradient(135deg, gold, #d4af37);
   border-radius: 8px;
   box-shadow: 0 0 8px rgba(255,215,0,0.4);
+  z-index: 2;
 }
 
-/* Nomor rekening - benar2 di tengah */
+/* ====== Nomor Rekening ====== */
 .rek-number {
   font-size: 22px;
   font-weight: 700;
   letter-spacing: 2px;
   text-align: center;
+  z-index: 2;
 }
 
-/* Nama pemilik */
+/* ====== Nama Pemilik ====== */
 .rek-name {
   font-size: 15px;
   opacity: 0.9;
+  z-index: 2;
 }
 
-/* Tombol salin */
+/* ====== Tombol Salin ====== */
 .copy-btn {
   position: absolute;
   bottom: 15px;
   left: 15px;
-  background: #ffffff;
-  color: #333;
+  background: #ffdd7d;
+  color: #1c1400;
   border: 1px solid #ccc;
   padding: 6px 13px;
   border-radius: 8px;
@@ -1240,6 +1239,8 @@
   align-items: center;
   gap: 6px;
   transition: 0.2s ease;
+  z-index: 10;           /* pastikan paling atas */
+  pointer-events: auto;  /* wajib supaya bisa diklik */
 }
 
 .copy-btn i {
@@ -1251,11 +1252,9 @@
   transform: scale(1.03);
 }
 
-
-
-
-
+/* ====== Hidden ====== */
 .hidden { display: none; }
+
 
 /* ====== KARTU HADIAH (KARTU KE 2) ====== */
 .gift-card {
