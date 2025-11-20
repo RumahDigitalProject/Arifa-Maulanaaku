@@ -1551,7 +1551,7 @@
 </div>
       <div class="atm-chip"></div>
       <div class="rek-number" id="nomorRek">9011 6173 5590</div>
-      <button class="copy-btn" onclick="copyRek()">
+      <button class="copy-btn" onclick="copyRek(this)">
   <i class="fa-regular fa-copy"></i> <span>Salin</span>
 </button>
     </div>
@@ -1760,26 +1760,25 @@ openBtn.style.display = "inline-block";
 // ============================================================
 // === SALIN NOMOR REKENING (TOMBOL LANGSUNG TERUBAH) ===
 // ============================================================
-function copyRek() {
+function copyRek(btn) {
   const nomor = document.getElementById("nomorRek").textContent.trim();
-  const btn = document.querySelector(".copy-btn");
   const icon = btn.querySelector("i");
   const text = btn.querySelector("span");
 
-  // Copy ke clipboard
+  // Copy dengan Clipboard API
   if (navigator.clipboard && window.isSecureContext) {
     navigator.clipboard.writeText(nomor).catch(() => fallbackCopy(nomor));
   } else {
     fallbackCopy(nomor);
   }
 
-  // Ubah tombol menjadi tersalin
+  // Ubah tombol → Tersalin
   icon.className = "fa-solid fa-check";
   text.textContent = "Tersalin";
   btn.style.background = "#b6ffb3";
   btn.style.color = "#0f4d00";
 
-  // Kembalikan tombol ke default dalam 1.5 detik
+  // Kembalikan ke default setelah 1.5 detik
   setTimeout(() => {
     icon.className = "fa-regular fa-copy";
     text.textContent = "Salin";
@@ -1788,7 +1787,7 @@ function copyRek() {
   }, 1500);
 }
 
-// fallback untuk browser lama
+// fallback
 function fallbackCopy(text) {
   const textarea = document.createElement("textarea");
   textarea.value = text;
@@ -1800,6 +1799,7 @@ function fallbackCopy(text) {
   document.execCommand("copy");
   document.body.removeChild(textarea);
 }
+
 
   // ============================================================
   // === NAMA TAMU DARI URL ===
