@@ -979,17 +979,26 @@
 }
 
 /* ====== GIFT WEDDING SECTION ====== */
+
 #gift {
   background: linear-gradient(135deg, #1a1f3c, #000);
   background-image: url('dasar1.webp');
-  min-height: 100vh;
   background-repeat: repeat-y;
   background-size: contain;
   background-position: top center;
   padding: 60px 20px;
   text-align: center;
   color: #fff;
+
+  /* ❗ sebelum klik tombol → tingginya mengikuti isi */
+  min-height: auto;
 }
+
+/* Setelah tombol "Buka Gift" dipencet → full screen */
+#gift.full-bg {
+  min-height: 100vh;
+}
+
 
 .GIFT-title {
   font-family: 'Great Vibes', cursive;
@@ -1519,19 +1528,33 @@ setTimeout(() => {
 
 
   
-  // ============================================================
-  // === GIFT ===
-  // ============================================================
+// ============================================================
+// === GIFT ===
+// ============================================================
 document.getElementById("openGiftBtn").addEventListener("click", function () {
-  const card = document.getElementById("atmCard");
 
-  // munculkan kartu
-  card.classList.remove("hidden");
+  // 1. Jadikan background full setelah tombol ditekan
+  document.getElementById("gift").classList.add("full-bg");
+
+  // 2. Ambil elemen kartu
+  const card1 = document.getElementById("atmCard");
+  const card2 = document.getElementById("giftCard");
+
+  // 3. Tampilkan kartu 1
+  card1.classList.remove("hidden");
   setTimeout(() => {
-    card.classList.add("show");
+    card1.classList.add("show");
   }, 50);
 
-  // sembunyikan tombol buka gift
+  // 4. Tampilkan kartu 2 (delay biar elegan)
+  setTimeout(() => {
+    card2.classList.remove("hidden");
+    setTimeout(() => {
+      card2.classList.add("show");
+    }, 50);
+  }, 600);
+
+  // 5. Sembunyikan tombol buka gift
   this.style.display = "none";
 });
 
@@ -1542,7 +1565,6 @@ window.addEventListener("DOMContentLoaded", () => {
     copyBtn.style.pointerEvents = "auto";
     copyBtn.style.zIndex = "99999";
 
-    // wajib! supaya klik memanggil fungsinya
     copyBtn.addEventListener("click", copyRek);
   }
 });
@@ -1578,29 +1600,8 @@ function fallbackCopy(text) {
   alert("Nomor rekening berhasil disalin:\n" + text);
 }
 
-  // === TAMPILKAN KARTU KE 2 SETELAH KARTU PERTAMA ===
-document.getElementById("openGiftBtn").addEventListener("click", function () {
-  const card1 = document.getElementById("atmCard");
-  const card2 = document.getElementById("giftCard");
 
-  // tampilkan kartu 1
-  card1.classList.remove("hidden");
-  setTimeout(() => {
-    card1.classList.add("show");
-  }, 50);
-
-  // tampilkan kartu 2 sedikit terlambat biar elegan
-  setTimeout(() => {
-    card2.classList.remove("hidden");
-    setTimeout(() => {
-      card2.classList.add("show");
-    }, 50);
-  }, 600);
-
-  // sembunyikan tombol
-  this.style.display = "none";
-});
-
+  
 
   // ============================================================
   // === NAMA TAMU DARI URL ===
