@@ -983,6 +983,8 @@
 
 
 
+
+
 /* ====== GIFT SECTION ====== */
 #gift {
   position: relative;
@@ -991,33 +993,37 @@
   text-align: center;
   color: #fff;
 
-  /* Background awal */
+  /* Background awal nge-zoom */
   background-image: url('dasar1.webp');
-  background-size: 210%;          /* zoom */
+  background-size: 220%;
   background-position: center top;
   background-repeat: no-repeat;
 
-  transition: background-size 1.2s ease-out, background-position 1.2s ease-out;
+  min-height: auto;
 }
 
-/* Saat tombol ditekan → ubah background jadi normal */
+/* Overlay yang nanti smooth fade-in */
+#gift::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background-image: url('dasar1.webp');
+  background-size: contain;
+  background-position: top center;
+  background-repeat: repeat-y;
+  opacity: 0;
+  transition: opacity 0.8s ease-in-out;
+  z-index: -1;
+}
+
 #gift.full-bg {
-  background-size: 100%;
-  background-position: center top;
+  background-size: 100% !important;
+  background-position: center top !important;
+  transition: background-size 0.8s ease-out, background-position 0.8s ease-out;
 }
 
-
-
-/* ====== KOTAK UTAMA ====== */
-.gift-container {
-  background: rgba(255,255,255,0.03);
-  backdrop-filter: blur(15px);
-  -webkit-backdrop-filter: blur(15px);
-  padding: 30px;
-  border-radius: 20px;
-  max-width: 650px;
-  margin: 0 auto;
-  box-shadow: 0 4px 15px rgba(0,0,0,0.25);
+#gift.full-bg::after {
+  opacity: 1;
 }
 
 .GIFT-title {
@@ -1027,7 +1033,20 @@
   margin-bottom: 20px;
 }
 
-/* Tulisan deskripsi */
+.gift-container {
+  background: rgba(255,255,255,0.03); /* super tipis, biar blur yang dominan */
+  backdrop-filter: blur(15px);        /* blur lebih kuat */
+  -webkit-backdrop-filter: blur(15px); /* untuk Safari */
+
+  padding: 30px;
+  border-radius: 20px;
+  max-width: 650px;
+  margin: 0 auto;
+
+  /* kurangi shadow biar ga ganggu blur */
+  box-shadow: 0 4px 15px rgba(0,0,0,0.25);
+}
+
 .gift-thanks {
   font-size: 16px;
   opacity: 0.9;
@@ -1052,9 +1071,7 @@
   background: #ffe9a8;
 }
 
-
-
-/* ====== KARTU ATM ====== */
+/* ====== KARTU ATM PREMIUM (FIX POSITION) ====== */
 .atm-card {
   width: 100%;
   max-width: 380px;
@@ -1062,7 +1079,7 @@
   margin: 30px auto 0;
   border-radius: 18px;
   padding: 20px;
-  padding-top: 60px;
+  padding-top: 60px;   /* ⬅️ Tambahan baru: bikin konten turun ke tengah */
   position: relative;
   color: #fff;
   box-shadow: 0px 6px 25px rgba(0,0,0,0.5);
@@ -1078,8 +1095,11 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: flex-start;
+  justify-content: flex-start; 
+  gap: 5px;
 }
+
+
 
 @keyframes premiumMove {
   0% { background-position: 0% 50%; }
@@ -1092,7 +1112,7 @@
   transform: translateY(0);
 }
 
-/* Elemen kartu */
+/* Nama Bank */
 .bank-name {
   position: absolute;
   top: 15px;
@@ -1101,6 +1121,7 @@
   font-weight: 700;
 }
 
+/* Chip di pojok kiri atas */
 .atm-chip {
   position: absolute;
   top: 20px;
@@ -1112,39 +1133,93 @@
   box-shadow: 0 0 8px rgba(255,215,0,0.4);
 }
 
+/* Nomor rekening - benar2 di tengah */
 .rek-number {
   font-size: 22px;
   font-weight: 700;
   letter-spacing: 2px;
+  text-align: center;
 }
 
+/* Nama pemilik */
 .rek-name {
   font-size: 15px;
   opacity: 0.9;
+  text-align: center;
 }
 
+/* Tombol salin */
 .copy-btn {
   position: absolute;
   bottom: 15px;
   left: 15px;
-  padding: 8px 15px;
-  border-radius: 10px;
+  transform: none !important;
   background: #ffdd7d;
   color: #1c1400;
   border: none;
-  font-size: 14px;
-  font-weight: 600;
+  padding: 8px 15px;
+  border-radius: 10px;
   cursor: pointer;
+  font-weight: 600;
+  font-size: 14px;
   transition: 0.3s;
   z-index: 9999;
 }
 
+
+
 .copy-btn:hover {
-  transform: scale(1.05);
   background: #ffe9a8;
+  transform: scale(1.05);
 }
 
+
+
+
 .hidden { display: none; }
+
+/* ====== KARTU HADIAH (KARTU KE 2) ====== */
+.gift-card {
+  width: 100%;
+  max-width: 380px;
+  margin: 25px auto 0;
+  padding: 25px 20px;
+  border-radius: 18px;
+  background: rgba(255,255,255,0.05);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  box-shadow: 0 6px 20px rgba(0,0,0,0.45);
+  color: #fff;
+  text-align: center;
+
+  opacity: 0;
+  transform: translateY(30px);
+  transition: 0.5s ease;
+}
+
+.gift-card.show {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.gift-icon {
+  font-size: 42px;
+  margin-bottom: 10px;
+}
+
+.gift-title {
+  font-size: 20px;
+  font-weight: 700;
+  color: #ffe9a8;
+  margin-bottom: 10px;
+}
+
+.gift-receiver {
+  font-size: 15px;
+  margin-bottom: 6px;
+  opacity: 0.9;
+}
+
 
 
 
