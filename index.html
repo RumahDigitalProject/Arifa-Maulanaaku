@@ -1795,24 +1795,28 @@ document.getElementById("closeGiftBtn").addEventListener("click", function () {
 
 
 // ============================================================
-// === SALIN NOMOR REKENING (PER KARTU) ===
+// === SALIN NOMOR REKENING (MULTI KARTU) ===
 // ============================================================
-function copyRek(button) {
-  const nomor = button
-    .closest(".atm-card")
-    .querySelector(".rek-number")
-    .textContent.trim();
+function copyRek(btn) {
+  // Cari kartu ATM tempat tombol ditekan
+  const nomor = btn.closest(".atm-card")
+                   .querySelector(".rek-number")
+                   .textContent.trim();
 
+  // Salin
   if (navigator.clipboard && window.isSecureContext) {
     navigator.clipboard.writeText(nomor)
-      .then(() => alert("Nomor rekening berhasil disalin:\n" + nomor));
+      .then(() => {
+        alert("Nomor rekening berhasil disalin:\n" + nomor);
+      })
+      .catch(() => fallbackCopy(nomor));
   } else {
     fallbackCopy(nomor);
   }
 }
 
 // ============================================================
-// === FALLBACK COPY ===
+// === FALLBACK ===
 // ============================================================
 function fallbackCopy(text) {
   const textarea = document.createElement("textarea");
@@ -1827,6 +1831,7 @@ function fallbackCopy(text) {
 
   alert("Nomor rekening berhasil disalin:\n" + text);
 }
+
 
   // ============================================================
   // === NAMA TAMU DARI URL ===
