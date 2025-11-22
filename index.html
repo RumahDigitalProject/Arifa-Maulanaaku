@@ -1205,39 +1205,40 @@ animation: premiumMove 6s ease infinite;
 .atm-chip {
   position: absolute;
   top: 20px;
-  left: 20px;
+  left: 20px;        /* tetap di pojok kiri atas */
   width: 48px;
   height: 34px;
   border-radius: 8px;
   overflow: hidden;
-  position: relative;
+  z-index: 2;
+
+  /* warna silver hologram */
   background: linear-gradient(135deg,
-      rgba(255,255,255,0.3),
-      rgba(255,255,255,0.05),
-      rgba(255,255,255,0.25)
+      #f5f5f5,
+      #cfcfcf,
+      #e4e4e4,
+      #bfbfbf
   );
-  box-shadow: 0 0 8px rgba(255,255,255,0.25);
+  
+  box-shadow:
+    0 0 6px rgba(255,255,255,0.4),
+    inset 0 0 6px rgba(0,0,0,0.25);
 }
 
-/* efek hologram bergerak */
+/* garis refleksi tipis di atas chip */
 .atm-chip::before {
   content: "";
   position: absolute;
   inset: 0;
-  background: conic-gradient(
-      from 0deg,
-      #ff008c,
-      #ffef00,
-      #00eaff,
-      #b600ff,
-      #ff008c
+  background: linear-gradient(
+      45deg,
+      rgba(255,255,255,0.45) 0%,
+      transparent 60%
   );
-  mix-blend-mode: overlay;
-  opacity: 0.65;
-  animation: holoSpin 4s linear infinite;
+  opacity: 0.6;
 }
 
-/* garis-garis chip */
+/* garis-garis chip biar realistis */
 .atm-chip::after {
   content: "";
   position: absolute;
@@ -1245,18 +1246,14 @@ animation: premiumMove 6s ease infinite;
   background:
     repeating-linear-gradient(
       90deg,
-      rgba(0,0,0,0.25) 0px,
-      rgba(0,0,0,0.25) 2px,
+      rgba(90,90,90,0.35) 0px,
+      rgba(90,90,90,0.35) 2px,
       transparent 2px,
       transparent 6px
     );
   opacity: 0.4;
 }
 
-@keyframes holoSpin {
-  from { transform: rotate(0deg); }
-  to   { transform: rotate(360deg); }
-}
 
 
 /* ====== Nomor Rekening ====== */
