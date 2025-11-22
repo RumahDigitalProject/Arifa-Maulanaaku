@@ -1741,7 +1741,7 @@ document.getElementById("openGiftBtn").addEventListener("click", function () {
     card1.classList.add("show");
   }, 50);
 
-  // === Kartu ATM 2 muncul (delay 600ms) ===
+  // === Kartu ATM 2 muncul ===
   setTimeout(() => {
     card2.classList.remove("hidden");
     setTimeout(() => {
@@ -1749,7 +1749,7 @@ document.getElementById("openGiftBtn").addEventListener("click", function () {
     }, 50);
   }, 600);
 
-  // === GiftCard muncul (delay lagi 600ms) ===
+  // === GiftCard muncul ===
   setTimeout(() => {
     card3.classList.remove("hidden");
     setTimeout(() => {
@@ -1798,7 +1798,8 @@ document.getElementById("closeGiftBtn").addEventListener("click", function () {
 // === SALIN NOMOR REKENING (MULTI KARTU) ===
 // ============================================================
 function copyRek(btn) {
-  // Cari kartu ATM tempat tombol ditekan
+
+  // Ambil nomor rekening dari kartu tempat tombol ditekan
   const nomor = btn.closest(".atm-card")
                    .querySelector(".rek-number")
                    .textContent.trim();
@@ -1815,8 +1816,9 @@ function copyRek(btn) {
   }
 }
 
+
 // ============================================================
-// === FALLBACK ===
+// === FALLBACK SALIN (HP / Browser Lama) ===
 // ============================================================
 function fallbackCopy(text) {
   const textarea = document.createElement("textarea");
@@ -1831,6 +1833,7 @@ function fallbackCopy(text) {
 
   alert("Nomor rekening berhasil disalin:\n" + text);
 }
+
 
 
   // ============================================================
