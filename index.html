@@ -1781,15 +1781,23 @@ document.getElementById("closeGiftBtn").addEventListener("click", function () {
 
 
 // ===============================
-// TOMBOL SALIN UNTUK SEMUA KARTU
+// TOMBOL SALIN YANG BENAR
 // ===============================
 document.addEventListener("click", function (e) {
-  if (e.target.closest(".copy-btn")) {
-    const card = e.target.closest(".atm-card");
-    const nomor = card.dataset.rek;
-    salin(nomor);
-  }
+
+  // jika elemen yang diklik adalah tombol salin
+  const btn = e.target.closest(".copy-btn");
+  if (!btn) return;
+
+  // ambil kartu tempat tombol itu berada
+  const card = btn.closest(".atm-card");
+
+  // ambil nomor rekening dari data-rek
+  const nomor = card.dataset.rek;
+
+  salin(nomor);
 });
+
 
 
 // ===============================
